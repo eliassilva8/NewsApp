@@ -24,26 +24,36 @@ public class NewsAdapter extends ArrayAdapter<News> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
+        ViewHolder viewHolder;
+
         View listItemView = convertView;
         if (listItemView == null) {
             listItemView = LayoutInflater.from(getContext()).inflate(
                     R.layout.news_list_item, parent, false);
-        }
 
+            viewHolder = new ViewHolder();
+            viewHolder.category = (TextView) listItemView.findViewById(R.id.category_view);
+            viewHolder.title = (TextView) listItemView.findViewById(R.id.title_view);
+            viewHolder.date = (TextView) listItemView.findViewById(R.id.date_view);
+            viewHolder.time = (TextView) listItemView.findViewById(R.id.time_view);
+            listItemView.setTag(viewHolder);
+        } else {
+            viewHolder = (ViewHolder) listItemView.getTag();
+        }
         News currentNews = getItem(position);
 
-        TextView category = (TextView) listItemView.findViewById(R.id.category_view);
-        category.setText(currentNews.getmCategory());
-
-        TextView title = (TextView) listItemView.findViewById(R.id.title_view);
-        title.setText(currentNews.getmTitle());
-
-        TextView date = (TextView) listItemView.findViewById(R.id.date_view);
-        date.setText(currentNews.getmDate());
-
-        TextView time = (TextView) listItemView.findViewById(R.id.time_view);
-        time.setText(currentNews.getmTime());
+        viewHolder.category.setText(currentNews.getmCategory());
+        viewHolder.title.setText(currentNews.getmTitle());
+        viewHolder.date.setText(currentNews.getmDate());
+        viewHolder.time.setText(currentNews.getmTime());
 
         return listItemView;
+    }
+
+    static class ViewHolder {
+        TextView category;
+        TextView title;
+        TextView date;
+        TextView time;
     }
 }
