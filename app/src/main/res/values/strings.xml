@@ -14,4 +14,6 @@
     <string name="settings_order_by_oldest_value" translatable="false">oldest</string>
     <string name="settings_order_by_relevance_label">Relevance</string>
     <string name="settings_order_by_relevance_value" translatable="false">relevance</string>
+    <string name="no_internet_connection">No internet connection</string>
+    <string name="no_news">No news found with that content</string>
 </resources>
