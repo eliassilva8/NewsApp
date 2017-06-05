@@ -57,9 +57,9 @@ public final class QueryUtils {
                 String category = currentNews.optString("sectionId");
                 String title = currentNews.optString("webTitle");
                 String date = currentNews.optString("webPublicationDate");
-                String time = currentNews.optString("webPublicationDate");
+                String url = currentNews.optString("webUrl");
 
-                news.add(new News(category, title, date, time));
+                news.add(new News(category, title, date, url));
             }
         } catch (JSONException e) {
             Log.e(LOG_TAG, "Problem parsing the news JSON results.");

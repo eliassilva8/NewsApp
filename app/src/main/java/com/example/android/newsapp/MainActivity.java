@@ -10,6 +10,8 @@ import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -34,6 +36,19 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         mAdapter = new NewsAdapter(this, newsList);
 
         newsListView.setAdapter(mAdapter);
+
+        newsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                News currentNews = mAdapter.getItem(position);
+
+                Uri newsUri = Uri.parse(currentNews.getmUri());
+
+                Intent websiteIntent = new Intent(Intent.ACTION_VIEW, newsUri);
+
+                startActivity(websiteIntent);
+            }
+        });
 
         LoaderManager loaderManager = getLoaderManager();
         loaderManager.initLoader(NEWS_LOADER_ID, null, this);

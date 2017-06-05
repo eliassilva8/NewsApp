@@ -8,13 +8,13 @@ public class News {
     private String mCategory;
     private String mTitle;
     private String mDate;
-    private String mTime;
+    private String mUri;
 
-    public News(String mCategory, String mTitle, String mDate, String mTime) {
+    public News(String mCategory, String mTitle, String mDate, String mUri) {
         this.mCategory = mCategory;
         this.mTitle = mTitle;
         this.mDate = mDate;
-        this.mTime = mTime;
+        this.mUri = mUri;
     }
 
     public String getmCategory() {
@@ -29,7 +29,7 @@ public class News {
         return mDate;
     }
 
-    public String getmTime() {
-        return mTime;
+    public String getmUri() {
+        return mUri;
     }
 }
