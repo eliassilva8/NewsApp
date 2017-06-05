@@ -10,11 +10,11 @@ import java.util.List;
  */
 
 public class NewsLoader extends AsyncTaskLoader<List<News>> {
+    private String mUri;
 
-    private static final String REQUEST_URL = "http://content.guardianapis.com/search?q=android&api-key=6803ba00-f22f-4319-90e9-3b76d573e632";
-
-    public NewsLoader(Context context) {
+    public NewsLoader(Context context, String uri) {
         super(context);
+        mUri = uri;
     }
 
     @Override
@@ -25,7 +25,7 @@ public class NewsLoader extends AsyncTaskLoader<List<News>> {
     @Override
     public List<News> loadInBackground() {
 
-        List<News> news = QueryUtils.fetchNewsData(REQUEST_URL);
+        List<News> news = QueryUtils.fetchNewsData(mUri);
         return news;
     }
 }
