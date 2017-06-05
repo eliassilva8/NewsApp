@@ -9,6 +9,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -44,8 +47,22 @@ public class NewsAdapter extends ArrayAdapter<News> {
 
         viewHolder.category.setText(currentNews.getmCategory());
         viewHolder.title.setText(currentNews.getmTitle());
-        viewHolder.date.setText(currentNews.getmDate());
-        viewHolder.time.setText(currentNews.getmTime());
+
+        String fullDateString = currentNews.getmDate();
+        SimpleDateFormat fullDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+        try {
+            Date newDate = fullDateFormat.parse(fullDateString);
+
+            fullDateFormat = new SimpleDateFormat("MMM-dd");
+            String date = fullDateFormat.format(newDate);
+            viewHolder.date.setText(date);
+
+            fullDateFormat = new SimpleDateFormat("HH:mm");
+            String time = fullDateFormat.format(newDate);
+            viewHolder.time.setText(time);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
 
         return listItemView;
     }
