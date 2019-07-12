@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     private ConnectivityManager connMgr;
     private LoaderManager loaderManager;
     private TextView mEmptyTextView;
+    private ProgressBar mProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +46,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
         mEmptyTextView = (TextView) findViewById(R.id.empty_view);
         newsListView.setEmptyView(mEmptyTextView);
+        mProgressBar = findViewById(R.id.progress_bar);
 
         newsListView.setAdapter(mAdapter);
 
@@ -96,6 +99,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     public void onLoadFinished(Loader<List<News>> loader, List<News> news) {
         mEmptyTextView.setText(R.string.no_news);
         mAdapter.clear();
+        mProgressBar.setVisibility(View.GONE);
         if (news != null && !news.isEmpty()) {
             mAdapter.addAll(news);
         }
