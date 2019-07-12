@@ -7,3 +7,7 @@
 * Updating information regularly
 * Doing network operations independent of the Activity lifecycle
 # Screenshot
+<img src="https://github.com/eliassilva8/NewsApp/blob/master/Screenshot_1562929685.png?raw=true" width="320" /> <img src="https://github.com/eliassilva8/NewsApp/blob/master/Screenshot_1562929681.png?raw=true" width="320" />
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/eliassilva8/NewsApp/blob/master/LICENSE)
+
